@@ -2,13 +2,39 @@
 
 $base-text-size: 16px;
 $base-font-family: sans-serif;
+$header-font: 'Patua One', cursive;
+$list-item-font: 'Sacramento', cursive;
 
 html {
   text-size-adjust: 100%;
+  height: 100%;
 }
 
 body {
   @include font-smoothing(on);
   margin: 0;
   font: $base-text-size / 1 $base-font-family;
+  min-height: 100%;
+}
+
+header {
+  font-family: $header-font;
+  background-color: #000;
+  color: white;
+  padding: 0 2em;
+  margin: 2em 0;
+}
+
+ul {
+  margin-top: 0.75em;
+  font-family: $list-item-font;
+  font-size: 2em;
+  list-style: none;
+  padding: 0;
+}
+
+footer {
+  font-size: 0.75em;
+  padding-top: 20em;
+  color: rgb(161, 161, 161);
 }
