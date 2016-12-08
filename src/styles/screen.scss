@@ -17,6 +17,14 @@ body {
   min-height: 100%;
 }
 
+.root {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  min-height: 100%;
+}
+
 header {
   font-family: $header-font;
   background-color: #000;
@@ -31,10 +39,24 @@ ul {
   font-size: 2em;
   list-style: none;
   padding: 0;
+
+  li.done {
+    text-decoration: line-through;
+    opacity: 0.5;
+  }
+}
+
+input {
+  padding: 8px;
+  font-size: 16px;
+
+  &:focus {
+    outline: none;
+  }
 }
 
 footer {
   font-size: 0.75em;
-  padding-top: 20em;
+  padding-top: 40%;
   color: rgb(161, 161, 161);
 }

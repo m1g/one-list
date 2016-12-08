@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 // import Items from './ItemList'
-import styles from './App.scss'
+import styles from '../styles/screen.scss'
 
 class App extends Component {
 
@@ -23,15 +23,27 @@ class App extends Component {
   handleSubmit = (event) => {
     event.preventDefault()
     this.setState({
-      items: this.state.items.concat(this.state.value),
+      items: this.state.items.concat({
+        label: this.state.value,
+        done: false
+      }),
       // concat is like push, but push modifies the array itself
       value: ''
     })
   }
 
+  toggleComplete = (i) => {
+    const items = this.state.items.slice()
+    items[i].done = !items[i].done
+    this.setState({
+      items: items
+    })
+  }
+
   render () {
     const items = this.state.items.map((item, i) => {
-      return <li key={i}> {item} </li>
+      const isDone = item.done ? styles.done : ''
+      return <li className={isDone} key={i} onClick={() => this.toggleComplete(i)}> {item.label} </li>
     })
 
     return <main className={styles.root}>
@@ -47,7 +59,6 @@ class App extends Component {
           placeholder='What to do?' />
       </form>
       <footer>
-        <img />
         <p>&copy; 2016 | Miguel Malcolm. One List to Rule them All!</p>
       </footer>
     </main>
